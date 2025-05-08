@@ -47,6 +47,8 @@ period_dict = {
 def convert_period_string_to_datetimes(period=None):
     if period:
         period_details = period_dict.get(period, None)
+        if period_details is None:
+            return None, None
         start_time = datetime.strptime(period_details.get("start_time", "00:00"), "%H:%M").time()
         end_time = datetime.strptime(period_details.get("end_time", "00:00"), "%H:%M").time()
 

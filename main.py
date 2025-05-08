@@ -27,7 +27,7 @@ def get_db():
 @app.get("/aggregates/")
 def get_aggregates(day:str, period:str, db: Session = Depends(get_db)):
  
-    day_id = day_dict.get(day, 0)
+    day_id = day_dict.get(day, None)
     if day_id is None:
         raise HTTPException(status_code=400, detail="Invalid day of week")
     
@@ -99,7 +99,7 @@ def get_aggregates_link_id(link_id:int, day:str, period:str, db: Session = Depen
     #            Link.speedcat).all()
     
 
-    day_id = day_dict.get(day, 0)
+    day_id = day_dict.get(day, None)
     if day_id is None:
         raise HTTPException(status_code=400, detail="Invalid day of week")
     
